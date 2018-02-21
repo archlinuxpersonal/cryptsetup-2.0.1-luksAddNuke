@@ -48,7 +48,7 @@ cp install-sd-encrypt src
 
 nano PKGBUILD
 
-# add to source at PKGBUILD
+#add to source at PKGBUILD
 'hooks-encrypt'
 'install-encrypt'
 'install-sd-encrypt'
