@@ -34,14 +34,21 @@ wget https://git.archlinux.org/svntogit/packages.git/plain/repos/core-x86_64/ins
 mv install-sd-encrypt?h=packages%2Fcryptsetup install-sd-encrypt
 
 #copy 4 patch file to src folder
+
 cp libcryptsetup.h.patch src
+
 cp keymanage.c.patch src
+
 cp setup.c.patch src
+
 cp cryptsetup.c.patch src
 
 #copy hooks-encrypt, install-encrypt, install-sd-encrypt to src folder
+
 cp hooks-encrypt src
+
 cp install-encrypt src
+
 cp install-sd-encrypt src
 
 #edit PKGBUILD
