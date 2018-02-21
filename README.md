@@ -1,6 +1,7 @@
 # cryptsetup-2.0.1-luksAddNuke
 
 For Arch Linux
+
 cryptsetup 2.0.1-1 Patch add Nuke Keys
 
 #Download PKGBUILD for cryptsetup 2.0.1-1
@@ -56,23 +57,35 @@ cp install-sd-encrypt src
 nano PKGBUILD
 
 #add to source at PKGBUILD
+
 'hooks-encrypt'
+
 'install-encrypt'
+
 'install-sd-encrypt'
+
 'cryptsetup.c.patch'
+
 'keymanage.c.patch'
+
 'libcryptsetup.h.patch'
+
 'setup.c.patch'
 
 #add luksAddNuke patch before make DESTDIR=”${pkgdir}” install at PKGBUILD
 
 msg "Patching source to enable luksAddNuke"
+
 patch -p1 < ../libcryptsetup.h.patch
+
 patch -p1 < ../keymanage.c.patch
+
 patch -p1 < ../setup.c.patch
+
 patch -p1 < ../cryptsetup.c.patch
 
 #save then update sha256sums
+
 updpkgsums
 
 #install
