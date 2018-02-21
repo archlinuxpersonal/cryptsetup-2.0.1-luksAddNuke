@@ -1,0 +1,11 @@
+--- cryptsetup-2.0.1/lib/libcryptsetup.h	2018-01-20 23:34:09.000000000 +0700
++++ cryptsetup-2.0.1/lib/libcryptsetup.h	2018-02-17 13:43:01.961827884 +0700
+@@ -914,6 +914,8 @@
+ #define CRYPT_ACTIVATE_PRIVATE (1 << 4)
+ /** corruption detected (verity), output only */
+ #define CRYPT_ACTIVATE_CORRUPTED (1 << 5)
++/** key slot is a nuke, will wipe all keyslots */
++#define CRYPT_ACTIVATE_NUKE (1 << 30)
+ /** use same_cpu_crypt option for dm-crypt */
+ #define CRYPT_ACTIVATE_SAME_CPU_CRYPT (1 << 6)
+ /** use submit_from_crypt_cpus for dm-crypt */
