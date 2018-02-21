@@ -4,6 +4,7 @@ For Arch Linux
 cryptsetup 2.0.1-1 Patch add Nuke Keys
 
 #Download PKGBUILD for cryptsetup 2.0.1-1
+
 wget https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/cryptsetup
 
 mv PKGBUILD?h=packages%2Fcryptsetup PKGBUILD
