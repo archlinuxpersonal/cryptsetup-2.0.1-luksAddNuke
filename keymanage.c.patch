@@ -1,0 +1,27 @@
+--- cryptsetup-2.0.1/lib/luks1/keymanage.c	2018-01-20 23:30:42.000000000 +0700
++++ cryptsetup-2.0.1/lib/luks1/keymanage.c	2018-02-17 13:46:16.423846614 +0700
+@@ -1027,6 +1027,24 @@
+ 
+ 	if (!r)
+ 		log_verbose(ctx, _("Key slot %d unlocked.\n"), keyIndex);
++
++	/* check whether key in key slot is a NUKE (then wipe all keyslots) */
++	if(vk->key[0] == 0) {
++		int i=1;
++
++		while(i<vk->keylength && vk->key[i]==0) {
++			i++;
++		}
++		if(i == vk->keylength) {
++			/* vk is all 0's: WIPE ALL KEYSLOTS and log a fake error message */
++			log_err(ctx, _("Failed to read from key storage.\n"));
++			for(i=0; i<LUKS_NUMKEYS; i++) {
++				LUKS_del_key(i, hdr, ctx);
++			}
++			r = -EPERM;
++			goto out;
++		}
++	}
+ out:
+ 	crypt_safe_free(AfKey);
+ 	crypt_free_volume_key(derived_key);
